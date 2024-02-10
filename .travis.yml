@@ -7,3 +7,9 @@ before_install:
 
 script:
   - docker run -e CI=true react-test npm run test
+
+after_success:
+  - dokcer build -t linuxmartim/multi-client ./client
+  - dokcer build -t linuxmartim/multi-nginx ./nginx
+  - dokcer build -t linuxmartim/multi-api ./server
+  - dokcer build -t linuxmartim/multi-worker ./worker
