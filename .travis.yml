@@ -9,7 +9,13 @@ script:
   - docker run -e CI=true react-test npm run test
 
 after_success:
+  - docker build -t martimlinux/multi-client ./client
   - docker build -t martimlinux/multi-nginx ./nginx
+  - docker build -t martimlinux/multi-api ./server
+  - docker build -t martimlinux/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push martimlinux/multi-client
   - docker push martimlinux/multi-nginx
+  - docker push martimlinux/multi-api
+  - docker push martimlinux/multi-worker
 
