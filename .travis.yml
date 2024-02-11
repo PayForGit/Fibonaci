@@ -11,5 +11,5 @@ script:
 after_success:
   - docker build -t martimlinux/multi-nginx ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push martimlinux/multi-nginx
+  - docker push martimlinux/multi-nginx
 
