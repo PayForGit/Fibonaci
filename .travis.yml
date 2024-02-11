@@ -9,7 +9,7 @@ script:
   - docker run -e CI=true react-test npm run test
 
 after_success:
-  - docker build -t linuxmartim/multi-nginx ./nginx
+  - docker build -t martimlinux/multi-nginx ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push linuxmartim/multi-nginx
+    - docker push martimlinux/multi-nginx
 
