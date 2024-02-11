@@ -13,3 +13,8 @@ after_success:
   - dokcer build -t linuxmartim/multi-nginx ./nginx
   - dokcer build -t linuxmartim/multi-api ./server
   - dokcer build -t linuxmartim/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  - docker push linuxmartim/multi-client
+  - docker push linuxmartim/multi-nginx
+  - docker push linuxmartim/multi-api
+  - docker push linuxmartim/multi-worker
