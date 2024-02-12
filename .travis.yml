@@ -19,14 +19,3 @@ after_success:
   - docker push martimlinux/multi-api
   - docker push martimlinux/multi-worker
 
-deploy:
-  provider: elasticbeanstalk
-  region: "eu-west-3"
-  app: "multi-docker-1  "
-  env: "MultiDocker-env-1"
-  bucket_name: "elasticbeanstalk-eu-west-3-173841254803"
-  bucket_path: "docker-aws"
-  on:
-    branch: main
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: "$AWS_SECRET_KEY"
